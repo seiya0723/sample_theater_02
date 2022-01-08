@@ -1,0 +1,44 @@
+<form action="{% url 'review:index' %}" method="GET">
+    <h3>検索</h3>
+    <div class="input-group">
+        <input class="form-control" type="text" name="search" value="{{ request.GET.search }}" placeholder="キーワード検索">
+        <div class="input-group-append">
+            <input class="form-control btn btn-outline-primary" type="submit" value="検索">
+        </div>
+    </div>
+</form>
+
+<h3>カテゴリ一覧</h3>
+<ul>
+    {% for category in categories %}
+    <li><a href="{% url 'review:index' %}?category={{ category.name }}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>公開月別アーカイブ</h3>
+
+<ul>
+    {% for m in monthly %}
+    {% if m.monthly_date %}
+    <li>
+        <a href="{% url 'review:index' %}?year={{ m.monthly_date.year }}&month={{ m.monthly_date.month }}">
+            {{ m.monthly_date|date:"Y年m月"|default:"公開日未定" }}({{ m.count }})
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+
+<h3>新着コメント</h3>
+
+<ul>
+    {% for n in new_comments %}
+    <li>
+        <a href="{% url 'review:single' n.target.id  %}">{{ n.target.title }}:{{ n.content }}</a>
+    </li>
+    {% endfor %}
+
+</ul>
+
+

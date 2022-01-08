@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>映画レビューサイト</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'review/css/style.css' %}">
+
+    {% block extra_head %}
+    {% endblock %}
+
+</head>
+<body>
+
+    <header class="bg-primary">
+        <h1><a class="text-white" href="{% url 'review:index' %}">映画レビューサイト</a></h1>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <article class="col-sm-8">{% block article %}{% endblock %}</article>
+            <aside class="col-sm-4">
+                {% include "review/sidebar.html" %}
+            </aside>
+        </div>
+    </main>
+
+</body>
+</html>

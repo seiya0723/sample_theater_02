@@ -1,0 +1,85 @@
+header{
+    font-size:2.5rem;
+}
+img{ max-width:100%;max-height:100%; }
+
+
+/* index.html */
+.movie_list_area{
+    padding:1rem;
+    margin:1rem 0;
+    background:lavender;
+
+}
+.movie_list_title{
+    color:lightcyan;
+    text-shadow:
+            black 1px 1px 0,  black -1px -1px 0,
+            black -1px 1px 0, black 1px -1px 0,
+            black 0px 1px 0,  black  0-1px 0,
+            black -1px 0 0,   black 1px 0 0;
+}
+.movie_list_category{
+    font-size:0.85rem;
+}
+.movie_list_category_link{
+    font-size:0.9rem;
+
+}
+.movie_list_dt{
+    font-size:0.85rem;
+
+}
+.movie_list_img{
+    max-height:10rem;
+}
+.movie_list_link_area{
+    text-align:right;
+}
+.movie_list_link{
+    display: inline-block;
+    padding:0.5rem 2rem;
+    color:dodgerblue;
+    border:solid 0.2rem dodgerblue;
+    border-radius:0.5rem;
+}
+
+
+/* single.html */
+
+.movie_area{
+    margin:1rem 0;
+}
+.movie_title{
+    color:lightcyan;
+    text-shadow:
+            black 1px 1px 0,  black -1px -1px 0,
+            black -1px 1px 0, black 1px -1px 0,
+            black 0px 1px 0,  black  0-1px 0,
+            black -1px 0 0,   black 1px 0 0;
+}
+.movie_category{
+}
+.movie_dt{
+}
+.movie_img{
+    text-align:center;
+}
+.movie_description{
+}
+
+.comment_list_star{
+    font-size:1.15rem;
+}
+.comment_list_star_icon{
+    font-size:1.2rem;
+    color:orange;
+}
+.comment_list_content{
+    padding:0 1rem;
+}
+
+.comment_list_dt{
+    text-align:right;
+    font-size:0.9rem;
+}

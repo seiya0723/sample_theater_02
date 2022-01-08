@@ -1,0 +1,98 @@
+{% extends "review/base.html" %}
+
+{% block extra_head %}
+{% endblock %}
+
+
+{% block article %}
+<div class="movie_area">
+    <h2 class="movie_title">{{ movie.title }}</h2>
+    <div class="movie_category">カテゴリ:{{ movie.category|default:"未分類" }}</div>
+    <div class="movie_dt">公開日:{{ movie.release }}</div>
+    {% if movie.img %}
+    <div class="movie_img"><img src="{{ movie.img.url }}" alt="映画画像"></div>
+    {% else %}
+    <div class="movie_img"><img src="" alt="画像なし"></div>
+    {% endif %}
+
+    <div class="movie_description">{{ movie.description }}</div>
+</div>
+
+<form class="my-2" action="" method="POST">
+    {% csrf_token %}
+
+    <select name="star">
+        <option value="">評価</option>
+        <option value="1">★</option>
+        <option value="2">★★</option>
+        <option value="3">★★★</option>
+        <option value="4">★★★★</option>
+        <option value="5">★★★★★</option>
+    </select>
+
+    <textarea class="form-control" name="content" maxlength="200" placeholder="ここにコメントを入力してください"></textarea>
+    <input class="btn btn-outline-primary form-control" type="submit" value="送信">
+</form>
+
+{% for comment in comments %}
+<div class="comment_list_area">
+
+    {% with range=''|center:comment.star %}
+    <div class="comment_list_star">評価:<span class="comment_list_star_icon">{% for x in range %}<i class="fas fa-star"></i>{% endfor %}</span></div>
+    {% endwith %}
+
+    <div class="comment_list_content">{{ comment.content|linebreaksbr }}</div>
+    <div class="comment_list_dt">{{ comment.dt }}</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hello World test!!</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 class="bg-primary text-white text-center">映画レビューサイト</h1>
+
+    <div class="border">
+        <div>{{ movie.dt }}</div>
+        <div>{{ movie.title }}</div>
+        {% if movie.img %}
+        <div><img src="{{ movie.img.url }}" alt="映画画像"></div>
+        {% endif %}
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <textarea class="form-control" name="content" maxlength="200" placeholder="ここにコメントを入力してください"></textarea>
+        <input type="submit" value="送信">
+    </form>
+
+    {% for comment in comments %}
+    <div class="border">
+        <div>{{ comment.content }}</div>
+        <div>{{ comment.dt }}</div>
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>
+{% endcomment %}
